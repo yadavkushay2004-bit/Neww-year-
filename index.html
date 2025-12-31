@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year Ashmita ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffd1dc, #ffb6c1);
+  color: #fff;
+  text-align: center;
+}
+
+/* Center Card */
+.card {
+  position: relative;
+  z-index: 10;
+  max-width: 360px;
+  margin: auto;
+  top: 15vh;
+  background: rgba(255,255,255,0.15);
+  padding: 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 2s;
+}
+
+h1 {
+  font-size: 30px;
+  animation: glow 2s infinite alternate;
+}
+
+.names {
+  font-size: 20px;
+  margin-bottom: 15px;
+  animation: slideUp 2s;
+}
+
+button {
+  background: #fff;
+  color: #ff4d6d;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 25px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes slideUp {
+  from {transform: translateY(30px); opacity:0;}
+  to {transform: translateY(0); opacity:1;}
+}
+@keyframes glow {
+  from {text-shadow: 0 0 5px #fff;}
+  to {text-shadow: 0 0 20px #ff4d6d;}
+}
+
+/* Rain */
+.rain {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: rgba(255,255,255,0.6);
+  animation: rainFall linear infinite;
+}
+@keyframes rainFall {
+  to {transform: translateY(110vh);}
+}
+
+/* Floating hearts / roses / butterflies */
+.float {
+  position: absolute;
+  animation: floatUp 10s linear infinite;
+  font-size: 22px;
+}
+@keyframes floatUp {
+  from {transform: translateY(100vh); opacity:1;}
+  to {transform: translateY(-10vh); opacity:0;}
+}
+
+/* Fireworks */
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: explode 2s infinite;
+}
+@keyframes explode {
+  0% {transform: scale(0);}
+  50% {transform: scale(3); opacity:1;}
+  100% {opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="content">
+  <h1>✨ Happy New Year ✨</h1>
+  <div class="names">Ashmita ❤️ Kushay</div>
+  <p>Is naye saal me ek chhota sa gift… sirf tumhare liye 💕</p>
+  <button onclick="next()">Tap to Open 💖</button>
+</div>
+
+<script>
+let step = 0;
+const content = document.getElementById("content");
+
+function next(answer){
+  step++;
+
+  const questions = [
+    {
+      q: "Kya main tumhari life ka special part hoon? ❤️",
+      a1: "Haan 😘",
+      a2: "Bilkul 💕"
+    },
+    {
+      q: "Kya tum mere saath har khushi or har problem share karogi? 🌸",
+      a1: "Hamesha 🤞",
+      a2: "Yes ❤️"
+    },
+    {
+      q: "Kya main tumhe har din thoda aur pyaar kar sakta hoon(kyuki mera man nhi bharta kabhi tumse)? 🥹",
+      a1: "Obviously 💖",
+      a2: "Of course 😍"
+    },
+    {
+      q: "Kya tum 2025 m mere dath momo khaogi? 🥹",
+      a1: "Yes 🥹",
+      a2: "Definitely 🥹😭"
+    },
+    {
+      q: "Last one… Kya tum meri ho? 🌹",
+      a1: "obviously ♥️",
+      a2: "sirf or sirf tumhari 🤭"
+    }
+  ];
+
+  if(step <= 5){
+    let i = step - 1;
+    content.innerHTML = `
+      <h2>Question ${step}</h2>
+      <p>${questions[i].q}</p>
+      <button onclick="next()">${questions[i].a1}</button>
+      <button onclick="next()">${questions[i].a2}</button>
+    `;
+  } else {
+    content.innerHTML = `
+      <h2>🎁 Surprise</h2>
+      <p>
+        Ashmita ❤️<br><br>
+        Tum meri zindagi ki sabse khoobsurat wajah ho.<br>
+        Is naye saal aur har saal…<br><br>
+        <b>I Love You 💕</b><br><br>
+        — Your Kushuu 🤭❤️
+      </p>
+    `;
+  }
+}
+
+/* Rain drops */
+for(let i=0;i<40;i++){
+  let drop=document.createElement("div");
+  drop.className="rain";
+  drop.style.left=Math.random()*100+"vw";
+  drop.style.animationDuration=1+Math.random()*2+"s";
+  document.body.appendChild(drop);
+}
+
+/* Floating emojis */
+const emojis = ["❤️","🌹","🦋"];
+for(let i=0;i<20;i++){
+  let e=document.createElement("div");
+  e.className="float";
+  e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left=Math.random()*100+"vw";
+  e.style.animationDuration=6+Math.random()*6+"s";
+  document.body.appendChild(e);
+}
+
+/* Fireworks */
+for(let i=0;i<6;i++){
+  let f=document.createElement("div");
+  f.className="firework";
+  f.style.left=Math.random()*100+"vw";
+  f.style.top=Math.random()*50+"vh";
+  document.body.appendChild(f);
+}
+</script>
+
+</body>
+</html>
